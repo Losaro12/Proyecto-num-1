@@ -42,4 +42,9 @@ Mystic Magellan, Mage, 80, 70, 50
 Lord Lich, Necromancer, 55, 70, 75
 Sigrid the Swift, Viking, 105, 65, 60
 Serpent King, Beast, 150, 130, 110
-
+Losaro,Mago,45,150,30
+Ashlyne,vikinga,150,200,45
+Cyber,Necromancer,40,60,70
+Rompetormentas,vikingo,200,350,100
+Cortamares,Criatura,300,250,150
+CantoMortal,Criatura,70,230,65

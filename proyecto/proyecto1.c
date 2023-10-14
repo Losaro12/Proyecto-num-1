@@ -12,7 +12,6 @@ struct Carta {
 };
 
 struct Jugador {
-    char nombre[50];
     int puntos_vida;
 };
 
@@ -38,8 +37,48 @@ void cargarCartasDesdeArchivo(struct Carta cartas[], int *num_cartas) {
 
     fclose(archivo);
 }
+void Menuturno() {
+    printf("\n************ Turno de Jugador 1 ************\n");
+    printf("1. Atacar\n");
+    printf("2. Colocar una carta\n");
+    printf("Seleccione una opcion: ");
+}
 
-// Función para revolver las cartas
+void atacar() {
+	
+    printf("Jugador 1 ha seleccionado 'Atacar'.\n");
+    
+    struct Carta *atacante;
+    struct Carta *defensor;
+    
+    int danio = atacante->puntos_ataque - defensor->puntos_defensa;
+
+    if (danio > 0) {
+        defensor->puntos_vida -= danio;
+        if (defensor->puntos_vida <= 0) {
+            printf("%s ha derrotado a %s.\n", atacante->nombre, defensor->nombre);
+        } else {
+            printf("%s inflige %d puntos de danio a %s. %s tiene %d puntos de vida restantes.\n",
+                   atacante->nombre, danio, defensor->nombre, defensor->nombre, defensor->puntos_vida);
+        }
+    } else {
+        printf("%s no pudo infligir danio a %s debido a su alta defensa.\n", atacante->nombre, defensor->nombre);
+    }
+    
+}
+
+void colocarCarta() {
+    printf("Jugador 1 ha seleccionado 'Colocar una carta'.\n");
+    // Lógica para colocar una carta
+    printf("hola mundo");
+}
+
+void AgregarVidasJugador(struct Jugador *jugador) {
+    jugador->puntos_vida = 5; 
+    // Entrega los puntos de vida al jugador
+}
+
+// Funcion para revolver las cartas
 void revolverCartas(struct Carta cartas[], int num_cartas) {
     for (int i = num_cartas - 1; i > 0; i--) {
         int j = rand() % (i + 1);
@@ -62,6 +101,7 @@ void mostrarMazo(struct Carta jugador[], int num_cartas) {
     }
 }
 
+
 void comenzarPartida() {
 printf("Comenzando la partida...\n");
 struct Carta cartas[10000];
@@ -69,17 +109,49 @@ int num_cartas = 0;
  cargarCartasDesdeArchivo(cartas, &num_cartas);
 srand(time(NULL));
 revolverCartas(cartas, num_cartas);
+int perdervida = 1;
    
 struct Carta jugador1[15];
 struct Carta jugador2[15];
+struct Jugador jugador1a;
+struct Jugador jugador2a;
+
+AgregarVidasJugador(&jugador1a);
+AgregarVidasJugador(&jugador2a);
 
 for (int i = 0; i < 15; i++) {
 jugador1[i] = cartas[i];
 jugador2[i] = cartas[i + 15];
 }
 
+ printf("El jugador1 tiene %d puntos de vida.\n", jugador1a.puntos_vida);
+printf("El jugador2 tiene %d puntos de vida.\n", jugador2a.puntos_vida);
 
-   
+while(jugador1a.puntos_vida > 0 && jugador2a.puntos_vida > 0){
+printf("ronda siguiente");
+ int opcion;
+
+    do {
+        Menuturno();
+        scanf("%d", &opcion);
+
+        switch (opcion) {
+            case 1:
+                atacar();
+                break;
+            case 2:
+                colocarCarta();
+                break;
+            default:
+      
+	            printf("Opcion no válida. Intente de nuevo.\n");
+        }
+    } while (opcion != 1 && opcion != 2);
+	
+	jugador2a.puntos_vida -= perdervida;
+	printf("\nEl jugador2 tiene %d puntos de vida.\n", jugador2a.puntos_vida);
+}
+
 }
 
 void crearCarta() {
@@ -124,9 +196,9 @@ void crearCarta() {
 
         printf("Carta creada y guardada en 'cartas.txt'!\n");
 
-        printf("Desea crear otra carta? (si o no): ");
+        printf("Desea crear otra carta? (s para si o n para no): ");
         scanf(" %c", &continuar);
-    } while (continuar == 'si' || continuar == 'S');
+    } while (continuar == 's' || continuar == 'S');
 }
 
 void historialPartida() {
