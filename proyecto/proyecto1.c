@@ -36,6 +36,7 @@ void cargarCartasDesdeArchivo(struct Carta cartas[], int *num_cartas) {
     }
 
     fclose(archivo);
+    free;
 }
 void Menuturno() {
     printf("\n************ Turno de Jugador 1 ************\n");
@@ -48,9 +49,9 @@ void atacar() {
 	
     printf("Jugador 1 ha seleccionado 'Atacar'.\n");
     
-    struct Carta *atacante;
-    struct Carta *defensor;
-    
+}
+
+void realizarAtaque(struct Carta *atacante, struct Carta *defensor) {
     int danio = atacante->puntos_ataque - defensor->puntos_defensa;
 
     if (danio > 0) {
@@ -58,13 +59,12 @@ void atacar() {
         if (defensor->puntos_vida <= 0) {
             printf("%s ha derrotado a %s.\n", atacante->nombre, defensor->nombre);
         } else {
-            printf("%s inflige %d puntos de danio a %s. %s tiene %d puntos de vida restantes.\n",
+            printf("%s inflige %d puntos de daño a %s. %s tiene %d puntos de vida restantes.\n",
                    atacante->nombre, danio, defensor->nombre, defensor->nombre, defensor->puntos_vida);
         }
     } else {
-        printf("%s no pudo infligir danio a %s debido a su alta defensa.\n", atacante->nombre, defensor->nombre);
+        printf("%s no pudo infligir daño a %s debido a su alta defensa.\n", atacante->nombre, defensor->nombre);
     }
-    
 }
 
 void colocarCarta() {
@@ -193,7 +193,8 @@ void crearCarta() {
         fprintf(archivo, "%s,%s,%d,%d,%d\n", nuevaCarta.nombre, nuevaCarta.tipo, nuevaCarta.puntos_vida, nuevaCarta.puntos_ataque, nuevaCarta.puntos_defensa);
 
         fclose(archivo);
-
+		free;
+			
         printf("Carta creada y guardada en 'cartas.txt'!\n");
 
         printf("Desea crear otra carta? (s para si o n para no): ");

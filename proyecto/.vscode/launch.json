@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/andgu/OneDrive/Documentos/Programación/proyecto",
-      "program": "c:/Users/andgu/OneDrive/Documentos/Programación/proyecto/build/Debug/outDebug",
+      "cwd": "c:/Users/andgu/OneDrive/Documentos/GitHub/Proyecto-num-1/proyecto",
+      "program": "c:/Users/andgu/OneDrive/Documentos/GitHub/Proyecto-num-1/proyecto/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
