@@ -11,3 +11,5 @@ en si al programa le falta mucho por ser trabajado tanto que a pesar de tener to
 pasando a la instalacion(compilacion) lo que puedo decir es que este trabajo lo hice con dos programas utilize tanto a visual estudio code como tambien dev c++ para compilar y asegurar su funcionalidad entonces para ejecutarlo simplemente abria el dev c++ ya que es el programa que se utilizar de manera mas segura.
 
 y eso seria todo del README saludos cordiales.
+
+link video: https://youtu.be/tXtGOyGCjFg
